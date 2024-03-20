@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Content Security Policy Demo</h1>
+    <p id="paragraph">This should be a red text (color set by JS)</p>
+    <img src="photo.jpeg" alt="local image" />
+    <img src="https://random-image-pepebigotes.vercel.app/api/random-image" alt="random image" width="300" />
+    <br />
+    <button id="alert" onclick="alert('Hello from event handler!')">Alert me</button>
+    <button id="hide">Hide Images</button>
+
+    <script>
+      console.log("Hello from inline script!");
+
+      // sets the color of the paragraph to red
+      const paragraph = document.getElementById("paragraph");
+      paragraph.style.color = "red";
+    </script>
+    <script src="scripts.js"></script>
+  </body>
+</html>

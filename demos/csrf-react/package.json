@@ -1,0 +1,20 @@
+{
+  "name": "csrf-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "pnpm -r dev",
+    "start": "turbo build && tsx --watch ./packages/server/server.ts",
+    "start:hacker": "tsx ./packages/hacker/server.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "tsx": "^4.7.1"
+  },
+  "devDependencies": {
+    "turbo": "^1.12.5"
+  }
+}

@@ -1,0 +1,30 @@
+body {
+  padding-top: 0px;
+  border: 10px solid green;
+}
+.thin {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+#search-form {
+  text-align: right;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+#search-result {
+  display: none;
+}
+#movie-data {
+  padding-bottom: 10px;
+}
+#playbill {
+  vertical-align: top;
+  margin: 10px;
+}
+#movie-details {
+  display: inline-block;
+  width: 40%;
+}
+#search-term {
+  font-style: italic;
+}

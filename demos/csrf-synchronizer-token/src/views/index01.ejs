@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang=en>
+  <head>
+    <meta charset=utf-8>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+    <link rel="stylesheet" type="text/css" href="css/center.css"/>
+    <title>The Vulnerable Movie Center - CSRF - Safe</title>
+  </head>
+  <body>
+    <section>
+      <h1 style="margin-top:5px">The Safe Movie Center - CSRF</h1>
+      <% if (isValidSession) { %>
+        <div style="text-align: right">
+          <a href="/user"><%= username %></a> - <a href="/logout">Logout</a>
+        </div>
+      <% } %>
+    </section>
+
+    <section id="movie-data">
+      <img id="playbill" src="images/good-bad-ugly.jpg"/>
+      <div id="movie-details">
+        <b>Title:</b> The Good, the Bad and the Ugly<br/>
+        <b>Year:</b> 1966<br/>
+        <b>Directed by:</b> Sergio Leone<br/>
+        <b>Starring:</b> Clint Eastwood, Lee Van Cleef, Eli Wallach<br/>
+        <b>Duration:</b> 177 min.<br/>
+        <br/>
+        <b>Plot:</b>
+        <p>During the Civil War, two men forming an uneasy alliance as bounty hunting scammers have to fight against a third in a race to find a treasure in gold buried in a remote cemetery.</p>
+        <button type="submit">Play</button>
+      </div>
+    </section>
+
+    <section id="comments">
+      <form method="post" action="reviews">
+          <textarea name="newReview" cols="80" rows="5" placeholder="Add your review"></textarea>
+          <% if (!isValidSession) { %>
+            <div><a href="user01"">Login</a> before submitting a review.</div>
+          <% } %>
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>"> <!--Add a CSRF token to the form-->
+          <button type="submit" <%= !isValidSession ? 'disabled' : '' %>>Submit</button>
+      </form>
+      <hr>
+      <h2>Comments</h2>
+      <dl>
+        <% reviews.forEach(review => {%>
+          <dt><%= username %></dt><dd><%= review %></dd>
+        <% }); %>
+      </dl>
+    </section>
+  </body>
+</html>

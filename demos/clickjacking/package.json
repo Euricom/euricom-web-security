@@ -1,0 +1,21 @@
+{
+  "name": "the-vulnerable-movie-center",
+  "version": "1.0.0",
+  "description": "A sample environment to test/demo XSS vulnerability.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -w . -e js,ejs movie-center/server.js",
+    "start-attacker": "nodemon -w . -e js,ejs attacker/server.js"
+  },
+  "keywords": [],
+  "author": "Andrea Chiarelli, Peter Cosemans",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "helmet": "^7.0.0",
+    "nodemon": "^2.0.4"
+  }
+}

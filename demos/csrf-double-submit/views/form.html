@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Double Submit Cookies Pattern Demo</title>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+      integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+      crossorigin="anonymous"
+    />
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: center;
+        align-items: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #f5f5f5;
+      }
+
+      .form-signin {
+        width: 100%;
+        max-width: 330px;
+        padding: 15px;
+        margin: auto;
+      }
+
+      .form-signin .checkbox {
+        font-weight: 400;
+      }
+
+      .form-signin .form-control {
+        position: relative;
+        box-sizing: border-box;
+        height: auto;
+        padding: 10px;
+        font-size: 16px;
+      }
+
+      .form-signin .form-control:focus {
+        z-index: 2;
+      }
+
+      .form-signin input[type="email"] {
+        margin-bottom: -1px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
+      .form-signin input[type="password"] {
+        margin-bottom: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+      body {
+        border: 10px solid green;
+      }
+    </style>
+  </head>
+  <body class="text-center" onload="getTokenAndInject()">
+    <form class="form-signin" id="contentForm" method="post" action="/add-user">
+      <h1>Double Submit Cookies Pattern</h1>
+      <hr />
+      <h3>Add New User</h3>
+      <!--<h4 class="h3 mb-3 font-weight-normal">Please sign in</h4>-->
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter users name" />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter the users email" />
+      </div>
+      <div class="alert alert-danger" role="alert" id="errorMessage">Invalid CSRF Token !!</div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Add New User !</button>
+      <button class="btn btn-lg btn-warning btn-block" onclick="signOut()" type="button">Sign Out !</button>
+      <p class="mt-5 mb-3 text-muted">Original Demo: https://github.com/laniltee/double-submit-cookies-pattern</p>
+    </form>
+  </body>
+</html>
+
+<script>
+  function getTokenAndInject() {
+    $("#errorMessage").hide();
+    const CSRF_TOKEN = Cookies.get("csrf-token");
+    $("#contentForm").append(`<input type="text" hidden name="csrfToken" id="csrfToken" value=${CSRF_TOKEN} />`);
+  }
+
+  function signOut() {
+    if (confirm("Are you sure to Sign Out ?")) {
+      $("#contentForm").attr("action", "/logout");
+      $("#contentForm").submit();
+    }
+  }
+</script>

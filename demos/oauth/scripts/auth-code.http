@@ -1,0 +1,13 @@
+// RUN THIS REQUEST IN THE TERMINAL (or postman)
+// YOU CAN'T RUN THIS IN THE BROWSER
+@TENANT_ID = 0b53d2c1-bc55-4ab3-a161-927d289257f2
+@CLIENT_ID = c134cace-e155-4f6a-be76-6a85f967a2ef
+
+POST https://login.microsoftonline.com/{{TENANT_ID}}/oauth2/v2.0/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code
+  &client_id={{CLIENT_ID}}
+  &code=0.ATwAwdJTC1W8s0qhYZJ9KJJX8s7KNMFV4WpPvnZqhflnou88AEU.AgABAAIAAADnfolhJpSnRYB1SVj-Hgd8AgDs_wUA9P8-iX3TziFjzeLJdESQkF61kThiArkpR7ZJ1G_f4b-s9Zt7aqyCAAsCHPCGTIohM3-s3q8MyHhbHB43Gl5nflLu-mYBCOGhY8U54X6c2DC2NntdDIhr8ZUBSwCmWZXetikdlRcMc7azS2peXx0phCACH91mVGh6Cg6PAgjhgQK6b2ly4VLxDdsYNmqFspqfeCZiPt76wdt3vcqAyuZbG4_NHp9FPyssDegKMqkFAoLO0RYR6kq8ZfMSqEoG2s26NqoeiDwNJO0JFsZ1kgTny-a4MlscwwsiVpdDsif6u7b8hVxUudROukjFnwdxRtbp0FLR1dtOiOqOLUq5ltfssQ45cZj8n3qdHKiH2-bO4i1deStXRUj1nZP9JD4s9ekA3EuddKiFoaWXIXL3qOULSqJZ-j-Rael8MMdCvIsoiuwQIhKaK-JUovvpQnlndxmN8iF2RBI_1V-xCOEAsm-GpSoSYH7M_Dmf3OTJiK-DuCcEaRj8uQwqpC2VA2C5lK_7AEcmKJEAC4Tnm50Z77STV1-oAIb_x5E-8ITNG1g56vNJIF5s6fk0l8_v9L9itg06QLDRB1FNsCXl7VGAXU27tbIImXeky15R0_YmqiT6nk9lIc2ucFO6XFHDDb-HHmbSkCw6iIKVczRjGESt7txh3M8s-FoZTO2ZqH3tNQ
+  &client_secret={{CLIENT_SECRET}}
+  &redirect_uri=http://localhost:5173

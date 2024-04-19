@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang=en>
+  <head>
+    <meta charset=utf-8>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+    <link rel="stylesheet" type="text/css" href="css/center.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <title>The Vulnerable Movie Center - CSRF - Safe</title>
+  </head>
+  <body onload="getTokenAndInject()">
+    <section>
+      <h1 style="margin-top:5px">The Movie Center - CSRF - Double Submit</h1>
+      <% if (isValidSession) { %>
+        <div style="text-align: right">
+          <a href="/user"><%= username %></a> - <a href="/logout">Logout</a>
+        </div>
+      <% } %>
+    </section>
+
+    <!-- <section id="movie-data">
+      <img id="playbill" src="images/good-bad-ugly.jpg" width="170"/>
+      <div id="movie-details">
+        <b>Title:</b> The Good, the Bad and the Ugly<br/>
+        <b>Year:</b> 1966<br/>
+        <b>Directed by:</b> Sergio Leone<br/>
+        <b>Starring:</b> Clint Eastwood, Lee Van Cleef, Eli Wallach<br/>
+        <b>Duration:</b> 177 min.<br/>
+        <br/>
+        <button type="submit">Play</button>
+      </div>
+    </section> -->
+
+    <section id="comments">
+      <form id="reviewForm" method="post" action="reviews">
+          <textarea name="newReview" cols="80" rows="2" placeholder="Add your review"></textarea>
+          <% if (!isValidSession) { %>
+            <div><a href="user01"">Login</a> before submitting a review.</div>
+          <% } %><br/>
+          <button type="submit" <%= !isValidSession ? 'disabled' : '' %>>Submit</button>
+      </form>
+      <dl>
+        <% reviews.forEach(review => {%>
+          <li>[<%= username %>] - <%= review %></li>
+        <% }); %>
+      </dl>
+    </section>
+    <script>
+    function getTokenAndInject() {
+      const csrfTokenValue = Cookies.get("csrf-token");
+      const formElement = document.getElementById("reviewForm");
+      var input = document.createElement("input");
+      input.setAttribute('type', 'hidden');
+      input.setAttribute('name', 'csrfToken');
+      input.setAttribute('value', csrfTokenValue);
+      formElement.appendChild(input);
+    }
+    </script>
+  </body>
+</html>

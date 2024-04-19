@@ -9,6 +9,7 @@ WORKDIR /app
 # Copy all files from current directory to working dir in image
 COPY . .
 # install node modules and build assets
+RUN npm install -g npm@10.5.2
 RUN npm i
 RUN npm run build
 

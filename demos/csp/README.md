@@ -17,4 +17,10 @@ pnpm start  # or npm start
 - Enable CSP header in server.js
 - Add CSP policy so it works again csp.js
 
+```
+  default-src 'none';
+  img-src 'self' 
+  script-src 'self'
+```
+
 - Enable CSP 'report only' in server.js

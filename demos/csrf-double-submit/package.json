@@ -1,20 +1,24 @@
 {
-  "name": "double-submit-cookies-pattern",
+  "name": "xss-sample-app",
   "version": "1.0.0",
+  "description": "A sample environment to test XSS vulnerability.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./server.js",
+    "start": "nodemon ./src/server.js",
+    "start:safe": "nodemon ./src/server01.js",
     "start:hacker": "serve -l 3099 ./hacker"
   },
-  "license": "MIT",
+  "keywords": [],
+  "author": "Andrea Chiarelli",
+  "license": "ISC",
   "dependencies": {
     "cookie-parser": "^1.4.3",
-    "express": "^4.16.3",
-    "nocache": "^2.0.0",
-    "uuid": "^3.3.2"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.0",
-    "serve": "^14.2.1"
+    "cors": "^2.8.5",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "nodemon": "^2.0.4",
+    "serve": "^14.2.1",
+    "uuid": "^9.0.1"
   }
 }

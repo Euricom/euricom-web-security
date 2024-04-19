@@ -55,7 +55,7 @@ app.use(
       secure: true,
       httpOnly: true,
       maxAge: 1000 * 3600 * 24, // 1day
-      sameSite: "none", // none | lax | strict
+      sameSite: "lax", // none | lax | strict
     },
   }),
 );

@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
   selector: 'html-escaping',
   template: `<div>
     <h2>HTML escaping</h2>
-    <!-- <demo-html-escaping /> -->
+    <p-card header="Attack">
+      <router-outlet></router-outlet>
+    </p-card>
   </div>`,
 })
 export class HTMLEscaping {}

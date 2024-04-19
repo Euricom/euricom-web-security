@@ -17,8 +17,11 @@
     "csp_evaluator": "^1.1.1",
     "dompurify": "^3.0.6",
     "express-csp-header": "^5.2.1",
+    "primereact": "^10.6.2",
     "react": "^18.2.0",
+    "react-code-blocks": "^0.1.6",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.3",
     "safevalues": "^0.5.2"
   },
   "devDependencies": {

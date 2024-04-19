@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
   selector: 'render-url',
   template: `<div>
     <h2>Render URL</h2>
-    <!-- <demo-render-url /> -->
+    <p-card header="Attack">
+      <router-outlet></router-outlet>
+    </p-card>
   </div>`,
 })
 export class RenderURL {}

@@ -18,7 +18,7 @@
     </section>
 
     <section id="movie-data">
-      <img id="playbill" src="images/good-bad-ugly.jpg"/>
+      <img id="playbill" src="images/good-bad-ugly.jpg" width="170"/>
       <div id="movie-details">
         <b>Title:</b> The Good, the Bad and the Ugly<br/>
         <b>Year:</b> 1966<br/>
@@ -26,26 +26,21 @@
         <b>Starring:</b> Clint Eastwood, Lee Van Cleef, Eli Wallach<br/>
         <b>Duration:</b> 177 min.<br/>
         <br/>
-        <b>Plot:</b>
-        <p>During the Civil War, two men forming an uneasy alliance as bounty hunting scammers have to fight against a third in a race to find a treasure in gold buried in a remote cemetery.</p>
         <button type="submit">Play</button>
       </div>
     </section>
 
     <section id="comments">
       <form method="post" action="reviews">
-          <textarea name="newReview" cols="80" rows="5" placeholder="Add your review"></textarea>
+          <textarea name="newReview" cols="80" rows="2" placeholder="Add your review"></textarea>
           <% if (!isValidSession) { %>
             <div><a href="user01"">Login</a> before submitting a review.</div>
           <% } %>
-          <input type="hidden" name="_csrf" value="<%= csrfToken %>"> <!--Add a CSRF token to the form-->
           <button type="submit" <%= !isValidSession ? 'disabled' : '' %>>Submit</button>
       </form>
-      <hr>
-      <h2>Comments</h2>
       <dl>
         <% reviews.forEach(review => {%>
-          <dt><%= username %></dt><dd><%= review %></dd>
+          <li>[<%= username %>] - <%= review %></li>
         <% }); %>
       </dl>
     </section>

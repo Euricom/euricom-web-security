@@ -5,7 +5,7 @@ export const DemoRenderURLSanitizeURL = () => {
 
   return (
     <div>
-      <a href={sanitizeUrl(evilUrl) ? evilUrl : "#"}>Click me - sanatizeUrl</a>
+      <a href={sanitizeUrl(evilUrl)}>Click me - sanatizeUrl</a>
     </div>
   );
 };

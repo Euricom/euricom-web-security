@@ -1,14 +1,24 @@
-import { DemoRenderURL } from "./RenderURL/DemoRenderURL";
-import { DemoRenderURLIsValid } from "./RenderURL/DemoRenderURLIsValid";
-import { DemoRenderURLSanitizeURL } from "./RenderURL/DemoRenderURLSanitizeURL";
+import { Card } from "primereact/card";
+import { CodeBlock, monoBlue } from "react-code-blocks";
+import { Outlet, useOutlet } from "react-router-dom";
+import ReactDomServer from "react-dom/server";
 
 export const RenderURL = () => {
+  const out = useOutlet();
   return (
     <>
       <h2>Render url</h2>
-      {/* <DemoRenderURL /> */}
-      {/* <DemoRenderURLIsValid /> */}
-      {/* <DemoRenderURLSanitizeURL /> */}
+      <Card title="Attack" className="mb-6">
+        <Outlet />
+      </Card>
+      <Card title="Output" className="mb-6">
+        <CodeBlock
+          text={ReactDomServer.renderToString(out)}
+          language="tsx"
+          showLineNumbers
+          theme={monoBlue}
+        />
+      </Card>
     </>
   );
 };

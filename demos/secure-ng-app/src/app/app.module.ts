@@ -12,6 +12,33 @@ import { HTMLEscaping } from './component/HTMLEscaping';
 import { RenderHTML } from './component/RenderHTML';
 import { RenderURL } from './component/RenderURL';
 
+import { MenubarModule } from 'primeng/menubar';
+import { CardModule } from 'primeng/card';
+
+import { Routes, provideRouter } from '@angular/router';
+
+export const routes: Routes = [
+  {
+    path: 'html-escaping',
+    component: HTMLEscaping,
+    children: [{ path: 'regular', component: DemoHTMLEscaping }],
+  },
+  {
+    path: 'render-url',
+    component: RenderURL,
+    children: [{ path: 'regular', component: DemoRenderURL }],
+  },
+  {
+    path: 'render-html',
+    component: RenderHTML,
+    children: [
+      { path: 'regular', component: DemoRenderHTML },
+      { path: 'ref', component: DemoRenderHTMLRef },
+      { path: 'bypass', component: DemoRenderHTMLBypass },
+    ],
+  },
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,8 +51,8 @@ import { RenderURL } from './component/RenderURL';
     RenderHTML,
     RenderURL,
   ],
-  imports: [BrowserModule, FormsModule],
-  providers: [],
+  imports: [BrowserModule, FormsModule, MenubarModule, CardModule],
+  providers: [provideRouter(routes)],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

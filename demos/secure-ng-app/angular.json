@@ -60,11 +60,6 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "headers": {
-              "Content-Security-Policy": "require-trusted-types-for 'script';"
-            }
-          },
           "configurations": {
             "production": {
               "browserTarget": "my-ng-app:build:production"

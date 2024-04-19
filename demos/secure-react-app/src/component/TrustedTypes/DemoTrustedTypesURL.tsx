@@ -4,8 +4,10 @@ export const DemoTrustedTypesURL = () => {
   const evilUrl = "javascript:alert('OMG')";
 
   return (
-    <div>
-      <a href={evilUrl}>Click me</a>
-    </div>
+    <>
+      <div>
+        <a href={evilUrl}>Click me</a>
+      </div>
+    </>
   );
 };

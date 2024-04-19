@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <!-- <link rel="stylesheet" href="./style.css" /> -->
+  </head>
+  <body>
+    <main class="cover-container h-100 p-3">
+      <h2>Cookie Demo</h2>
+      <span id="cookieValue"></span>
+      <hr />
+      <p id="message" />
+      <hr />
+      <% if (typeof userName === 'string') { %>
+      <button onclick="logout()">Logout</button> <span>Welcome <%= userName %></span>
+      <% } else { %>
+      <button onclick="login()">Login</button>
+      <% } %>
+    </main>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript">
+      const cookieValueEl = document.getElementById("cookieValue");
+      const cookie = getCookie("serverCookie");
+      if (cookie) {
+        cookieValueEl.innerHTML = `ServerCookie: ${cookie}`;
+      }
+
+      function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(";");
+        for (let i = 0; i < ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == " ") {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
+
+      function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+        const expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+      }
+
+      function displayInfo() {
+        const expDate = new Date();
+        let visit;
+        expDate.setTime(expDate.getTime() + 24 * 60 * 60 * 1000 * 365);
+        if (!(visit = getCookie("visit"))) visit = 0;
+        visit++;
+        setCookie("visit", visit, expDate, "/", null, false);
+        var message;
+        if (visit == 1) message = "Welcome to my page!";
+        if (visit == 2) message = "I see you came back !";
+        if (visit == 3) message = "Oh, it's you again!";
+        if (visit == 4) message = "You must be curious!";
+        if (visit == 5) message = "You're practically a regular!";
+        if (visit == 6) message = "You need a hobby!";
+        if (visit > 6) message = "Nothing better to do?";
+        if (visit > 20) message = "Don't you ever sleep?";
+        if (visit > 30) message = "Get a life!!!";
+        if (visit > 40) message = "Are you serious?";
+        var txt = (document.getElementById("message").innerHTML =
+          "Your browser has visited this page " + visit + " time(s).<br/>" + message);
+      }
+
+      function login() {
+        window.location.href = "./login";
+      }
+
+      function logout() {
+        window.location.href = "./logout";
+      }
+
+      // Add this line to count page visits
+      window.onload = displayInfo;
+    </script>
+  </body>
+</html>

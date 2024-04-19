@@ -1,0 +1,26 @@
+{
+  "name": "cookies",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "pnpm -r dev",
+    "start": "tsx --watch ./packages/website/server.ts",
+    "start:sub": "tsx --watch ./packages/website.sub/server.ts",
+    "start:hacker": "tsx --watch ./packages/hacker/server.ts",
+    "start:other": "tsx --watch ./packages/other/server.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express-session": "^1.18.0",
+    "tsx": "^4.7.1"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.7",
+    "@types/express-session": "^1.18.0",
+    "turbo": "^1.12.5"
+  }
+}

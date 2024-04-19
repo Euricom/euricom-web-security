@@ -4,9 +4,9 @@ import { Component } from '@angular/core';
   selector: 'render-html',
   template: `<div>
     <h2>Render HTML</h2>
-    <!-- <demo-render-html /> -->
-    <!-- <demo-render-html-ref /> -->
-    <!-- <demo-render-html-bypass /> -->
+    <p-card header="Attack">
+      <router-outlet></router-outlet>
+    </p-card>
   </div>`,
 })
 export class RenderHTML {}

@@ -1,5 +1,7 @@
 // add here your Content Security Policy
 const csp = `
+  default-src 'none';
+    
 `;
 
 export default removeComments(csp);
@@ -32,16 +34,10 @@ function removeComments(str: string) {
   Content Security Policy
   https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
 
-  default-src 
-    'none';
-  img-src 
-    'self' 
-    random-image-pepebigotes.vercel.app;
-  script-src 
-    'self' 
-    ajax.googleapis.com;
-  style-src 
-    'self';
+  default-src 'none';
+  img-src 'self' random-image-pepebigotes.vercel.app;
+  script-src 'self' ajax.googleapis.com;
+  style-src 'self'; 
   report-uri /api/csp-report-uri;
   report-to csp-endpoint;
 */

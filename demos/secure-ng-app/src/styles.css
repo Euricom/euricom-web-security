@@ -2,8 +2,14 @@
 @tailwind components;
 @tailwind utilities; */
 
+@import "node_modules/primeng/resources/themes/fluent-light/theme.css";
+
+/* Order */
+@layer reset, primeng;
+
 body {
   margin: 0;
+  background-color: rgb(249, 249, 249);
 }
 
 :root {
@@ -37,9 +43,6 @@ body {
 }
 
 .content {
-  margin: 2rem;
-  border: 2px solid #062a30;
-  border-radius: 8px;
-  padding: 1.25rem;
+  padding: 2rem;
   min-height: 10rem;
 }

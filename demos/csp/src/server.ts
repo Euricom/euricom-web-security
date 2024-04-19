@@ -11,7 +11,7 @@ const app = express();
 app.use((req, res, next) => {
   if (req.accepts("html")) {
     // res.setHeader("content-security-policy", csp);
-    res.setHeader("content-security-policy-report-only", csp);
+    // res.setHeader("content-security-policy-report-only", csp);
     res.setHeader("reporting-endpoints", 'csp-endpoint="https://goodwebsite.com:3000/api/csp-report-v2"');
   }
   next();
